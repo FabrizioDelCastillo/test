@@ -1,11 +1,17 @@
 {% extends '../index_master.html' %} 
+{% block title %}
+Lista de usuarios
+{% endblock %}
 
 {% block content %} 
-
 <div class="right_col" role="main">
     <h1> Lista de Usuario </h1>  
-
-    <table class="table table-striped table-sm table-secondary border-danger">
+  <div>
+    <input type="text" name="keyword" id="keyword" class="from-control" style="display: inline-block">
+    <button type="submit" name="search" class="btn btn-success"><i class="fa fa-search"></i></button>
+    <button name="back" class="btn btn-primary" onclick="window.location.href 'agregar'"> <i class= "fa fa-plus"></i>Nuevo Usuario</button>  
+  <div style="overflow-x: auto;">
+    <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -16,6 +22,9 @@
             <th scope="col">Documento</th>
             <th scope="col">Fecha de Nacimiento</th>
             <th scope="col">Fecha de Registro</th>
+            <th scope="col">Accion</th>
+
+
           </tr>
         </thead>
         <tbody>
@@ -30,6 +39,10 @@
             <td>{{ u.documento }}</td>
             <td>{{ u.f_nac }}</td>
             <td>{{ u.f_registro }}</td>
+            <td>
+              <button class="btn btn-warning" onclick="window.location.href='actualizar/{{ u.id }}'"><i class= "fa fa-refresh"></i></button>
+              <button class="btn btn-danger" onclick="window.location.href='eliminar/{{ u.id }}'"><i class= "fa fa-trash"></i></button>
+            </td>
           </tr>
         {% endfor %} 
 
@@ -37,6 +50,6 @@
       
       </table>
 
-</div>
+</input>
 
 {% endblock %}   

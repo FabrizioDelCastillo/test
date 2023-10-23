@@ -58,17 +58,15 @@
                   </li>
                   <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="listar"><i class="fa fa-user"></i> Listar</a></li>
-                      <li><a href="agregar"><i class="fa fa-user-plus"></i> Agregar</a></li>
-                      <li><a href="actualizar"><i class="fa fa-user"></i> Actualizar</a></li>
-                      <li><a href="eliminar"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                      <li><a href="{% url 'listar' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
                     </ul>
                   </li>
 
                 </ul>
               </div>
-
-
             </div>
             <!-- /sidebar menu -->
 
@@ -195,7 +193,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Fabrizi Del Castillo <a href="https://colorlib.com">DCsofware</a>
           </div>
           <div class="clearfix"></div>
         </footer>

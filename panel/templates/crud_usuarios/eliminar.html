@@ -5,7 +5,7 @@
 <div class="right_col" role="main">
 <h1> Eliminar Usuarios </h1>  
 
-    <form action= "actualizar" method="POST">
+    <form action="" method="POST">
     {% csrf_token %}
 
         <div class="form-group row">
@@ -13,23 +13,24 @@
             <div class="col-8">
                 <div class="input-group">
                 <div class="input-group-addon">
-                    <i class="fas fa-id-badge"></i>
+                <i class="fas fa-id-badge"></i>
                 </div> 
 
-                    <select id= "id" name="id">
-                    {% for u in usuarios %}
-                        <option value="{{u.id}}">{{u.id}}</option>
-                    {% endfor %}  
-                    </select>
-                </div>
+                <select id= "id" name="id">
+                {% for u in usuarios %}
+                    <option value="{{u.id}}" {% if u.id == usuario.id %} selected {% endif %} >{{u.id}} - {{u.nombre}} {{u.apellido}}</option>
+                {% endfor %}  
+            </select>
+            </div>
             </div>
         </div>
         <div class="form-group row">
             <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Agregar Usuario</button>
+            <button name="back" class="btn btn-primary" onclick="history.back(); return false;"><i class="fa fa-user-arrows-left"></i> Volver</button>
+            <button name="submit" type="submit" class="btn btn-danger"><i class="fa fa-user-trash"></i> Eliminar Usuario</button>
             </div>
         </div>
-  </form>
+    </form>
 </div>
 
 {% endblock %}  
