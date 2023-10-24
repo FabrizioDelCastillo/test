@@ -5,11 +5,16 @@ Lista de usuarios
 
 {% block content %} 
 <div class="right_col" role="main">
-    <h1> Lista de Usuario </h1>  
+    <h1> Lista de Usuario </h1>
+  <form action="" method="POST">
   <div>
+    {%csrf_token%}
     <input type="text" name="keyword" id="keyword" class="from-control" style="display: inline-block">
+    
+  
+</form>
     <button type="submit" name="search" class="btn btn-success"><i class="fa fa-search"></i></button>
-    <button name="back" class="btn btn-primary" onclick="window.location.href 'agregar'"> <i class= "fa fa-plus"></i>Nuevo Usuario</button>  
+    <button name="agregar" class="btn btn-primary" onclick="window.location.href= 'agregar'"> <i class= "fa fa-plus"></i>Nuevo Usuario</button>   
   <div style="overflow-x: auto;">
     <table class="table">
         <thead>
