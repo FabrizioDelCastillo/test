@@ -56,12 +56,21 @@
                   <li><a href="http://localhost:8000"><i class="fa fa-home"></i> Home </a>
 
                   </li>
+                  
                   <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{% url 'listar' %}"><i class="fa fa-user"></i> Listar</a></li>
                       <li><a href="{% url 'agregar' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
                       <li><a href="/actualizar/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
                       <li><a href="/eliminar/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-shopping-cart"></i> Ventas <span class="fa fa-chevron-down"></span></a>                  
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_ventas' %}"><i class="fa fa-user"></i> Lista de Ventas</a></li>
+                      <li><a href="{% url 'agregar_ventas' %}"><i class="fa fa-cart-plus"></i> Agregar Ventas</a></li>
+                      <li><a href="/actualizar_ventas/0"><i class="fa fa-refresh"></i> Actualizar Ventas</a></li>
+                      <li><a href="/eliminar_ventas/0"><i class="fa fa-user-times"></i> Eliminar Ventas</a></li>
                     </ul>
                   </li>
 
@@ -99,7 +108,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Fabrizi DC
+                    <img src="images/img.jpg" alt="">Fabrizio DC
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>
