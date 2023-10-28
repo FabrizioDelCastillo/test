@@ -34,19 +34,19 @@ Lista de usuarios
         </thead>
         <tbody>
             
-        {% for u in usuarios %}  
+        {% for v in ventas %}  
           <tr>
-            <th scope="row">{{ u.id }}</th>
-            <td>{{ u.nombre }}</td>
-            <td>{{ u.apellido }}</td>
-            <td>{{ u.correo }}</td>
-            <td>{{ u.telefono }}</td>
-            <td>{{ u.documento }}</td>
-            <td>{{ u.f_nac }}</td>
-            <td>{{ u.f_registro }}</td>
+            <th scope="row">{{ v.id }}</th>
+            <td>{{ v.nombre }}</td>
+            <td>{{ v.apellido }}</td>
+            <td>{{ v.correo }}</td>
+            <td>{{ v.telefono }}</td>
+            <td>{{ v.documento }}</td>
+            <td>{{ v.f_nac }}</td>
+            <td>{{ v.f_registro }}</td>
             <td>
-              <button class="btn btn-warning" onclick="window.location.href='actualizar/{{ u.id }}'"><i class= "fa fa-refresh"></i></button>
-              <button class="btn btn-danger" onclick="window.location.href='eliminar/{{ u.id }}'"><i class= "fa fa-trash"></i></button>
+              <button class="btn btn-warning" onclick="window.location.href='actualizar_ventas/{{ v.id }}'"><i class= "fa fa-refresh"></i></button>
+              <button class="btn btn-danger" onclick="window.location.href='eliminar_ventas/{{ v.id }}'"><i class= "fa fa-trash"></i></button>
             </td>
           </tr>
         {% endfor %} 
