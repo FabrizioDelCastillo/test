@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="http://localhost:8000" class="site_title"><i class="fa fa-paw"></i> <span>Dream Team!</span></a>
+              <a href="http://localhost:8000" class="site_title"><i class="fa fa-solid fa-paw"></i> <span>Dream Team!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -65,6 +65,7 @@
                       <li><a href="/eliminar/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
                     </ul>
                   </li>
+
                   <li><a><i class="fa fa-shopping-cart"></i> Ventas <span class="fa fa-chevron-down"></span></a>                  
                     <ul class="nav child_menu">
                       <li><a href="{% url 'listar_ventas' %}"><i class="fa fa-user"></i> Lista de Ventas</a></li>
@@ -73,7 +74,133 @@
                       <li><a href="/eliminar_ventas/0"><i class="fa fa-user-times"></i> Eliminar Ventas</a></li>
                     </ul>
                   </li>
+                                    
+                  <li><a><i class="fa fa-solid fa-dollar"></i> Tarifa <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_tarifa' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_tarifa' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_tarifa/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_tarifa/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a><i class="fa fa-solid fa-briefcase"></i> Cartera <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_cartera' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_cartera' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_cartera/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_cartera/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
 
+                  <li><a><i class="fa fa-duotone fa-map-signs"></i> Campaña <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_campana' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_campana' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_campana/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_campana/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+
+                  <li><a><i class="fa fa-solid fa-truck"></i> Operador <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_operador' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_operador' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_operador/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_operador/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-solid fa-compass"></i> Dirección <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_direccion' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_direccion' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_direccion/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_direccion/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-solid fa-globe"></i> Tecnología <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_tecnologia' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_tecnologia' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_tecnologia/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_tecnologia/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-solid fa-street-view"></i> Segmento <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_segmento' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_segmento' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_segmento/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_segmento/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-regular fa-mobile"></i> Paquete Movil <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_paquete_movil' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_paquete_movil' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_paquete_movil/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_paquete_movil/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-solid fa-list"></i> Modalidad <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_modalidad' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_modalidad' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_modalidad/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_modalidad/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a><i class="fa fa-solid fa-signal"></i> Estado <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_estado' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_estado' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_estado/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_estado/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                                    
+                  <li><a><i class="fa fa-light fa-bolt"></i> Potencia <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_potencia' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_potencia' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_potencia/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_potencia/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-solid fa-eye"></i> Observación <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_observacion' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_observacion' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_observacion/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_observacion/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a><i class="fa fa-solid fa-hourglass-start"></i> Asistencia <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_asistencia' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_asistencia' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_asistencia/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_asistencia/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
+                                  
+                  <li><a><i class="fa fa-solid fa-bullhorn"></i> Anuncios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'listar_anuncios' %}"><i class="fa fa-user"></i> Listar</a></li>
+                      <li><a href="{% url 'agregar_anuncios' %}"><i class="fa fa-user-plus"></i> Agregar</a></li>
+                      <li><a href="/actualizar_anuncios/0"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                      <li><a href="/eliminar_anuncios/0"><i class="fa fa-user-times"></i> Eliminar</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -1,0 +1,87 @@
+{% extends '../index_master.html' %} 
+
+{% block content %} 
+
+<div class="right_col" role="main">
+    <h1> Agregar Campañas </h1>  
+
+
+    <form action= "agregar_campana" method="POST">
+      {% csrf_token %}
+        <div class="form-group row">
+          <label for="nombre" class="col-4 col-form-label">Nombre</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-address-card"></i>
+              </div> 
+              <input id="nombre" name="nombre" type="text" required="required" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="apellido" class="col-4 col-form-label">Apellido</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-address-card-o"></i>
+              </div> 
+              <input id="apellido" name="apellido" type="text" required="required" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="correo" class="col-4 col-form-label">Correo</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-inbox"></i>
+              </div> 
+              <input id="correo" name="correo" type="email" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="telefono" class="col-4 col-form-label">Telefono</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-phone"></i>
+              </div> 
+              <input id="telefono" name="telefono" type="number" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="documento" class="col-4 col-form-label">Documento</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-barcode"></i>
+              </div> 
+              <input id="documento" name="documento" type="number" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="f_nac" class="col-4 col-form-label">Fecha de Nacimiento</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div> 
+              <input id="f_nac" name="f_nac" type="date" required="required" class="form-control">
+            </div>
+          </div>
+        </div> 
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="back" class="btn btn-primary" onclick="history.back(); return false;"><i class="fa fa-angles-left"></i> Volver </button>
+            <button name="submit" type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Agregar Campaña</button>
+          </div>
+        </div>
+    </form>
+      
+
+</div>
+{% endblock %} 

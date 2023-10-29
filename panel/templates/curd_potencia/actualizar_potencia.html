@@ -3,13 +3,13 @@
 {% block content %} 
 
 <div class="right_col" role="main">
-    <h1> Actualizar Ventas </h1>
+    <h1> Actualizar Potencia </h1>
 
     <form action="" method="POST">
         {% csrf_token %}
         
         <div class="form-group row">
-            <label for="nombre" class="col-4 col-form-label">ID Ventas</label> 
+            <label for="nombre" class="col-4 col-form-label">ID Potencia</label> 
             <div class="col-8">
               <div class="input-group">
                 <div class="input-group-addon">
@@ -17,8 +17,8 @@
                 </div> 
 
                 <select id= "id" name="id" class="form-control">
-                {% for v in ventas %}
-                    <option value="{{v.id}}" {%if v.id == ventas.id %} selected {% endif %}> {{v.id}}</option>
+                {% for p in potencia %}
+                    <option value="{{p.id}}" {%if p.id == potencia.id %} selected {% endif %}> {{p.id}}</option>
                 {% endfor %}  
             </select>            
               </div>
@@ -32,7 +32,7 @@
               <div class="input-group-addon">
                 <i class="fa fa-address-card-o"></i>
               </div> 
-              <input id="nombre" name="nombre" type="text" required="required" class="form-control" value="{{ ventas.nombre }}">
+              <input id="nombre" name="nombre" type="text" required="required" class="form-control" value="{{ potencia.nombre }}">
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-address-card-o"></i>
                 </div> 
-                <input id="apellido" name="apellido" type="text" required="required" class="form-control" value="{{ ventas.apellido }}">
+                <input id="apellido" name="apellido" type="text" required="required" class="form-control" value="{{ potencia.apellido }}">
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-inbox"></i>
                 </div> 
-                <input id="correo" name="correo" type="email" class="form-control" value="{{ ventas.correo }}">
+                <input id="correo" name="correo" type="email" class="form-control" value="{{ potencia.correo }}">
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div> 
-                <input id="telefono" name="telefono" type="number" class="form-control" value="{{ ventas.telefono }}">
+                <input id="telefono" name="telefono" type="number" class="form-control" value="{{ potencia.telefono }}">
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-barcode"></i>
                 </div> 
-                <input id="documento" name="documento" type="number" class="form-control" value="{{ ventas.documento }}">
+                <input id="documento" name="documento" type="number" class="form-control" value="{{ potencia.documento }}">
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div> 
-                <input id="f_nac" name="f_nac" type="date" required="required" class="form-control" value="{{ ventas.f_nac }}">
+                <input id="f_nac" name="f_nac" type="date" required="required" class="form-control" value="{{ potencia.f_nac }}">
               </div>
             </div>
           </div> 
@@ -100,7 +100,7 @@
           <div class="form-group row">
             <div class="offset-4 col-8">              
               <button name="back" class="btn btn-primary" onclick="history.back(); return false;"><i class="fa fa-angles-left"></i> Volver </button>
-              <button name="submit" type="submit" class="btn btn-warning"><i class="fa fa-refresh"></i> Editar Venta </button>
+              <button name="submit" type="submit" class="btn btn-warning"><i class="fa fa-refresh"></i> Editar Potencia </button>
             </div>
           </div>
       </form>
