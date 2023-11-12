@@ -1,0 +1,52 @@
+{% extends '../index_master.html' %} 
+{% block title %}
+Lista de Dirección
+{% endblock %}
+
+{% block content %} 
+<div class="right_col" role="main">
+    <h1> Lista de Dirección </h1>
+  <div sytle="display: inline-block">
+    <form action="" method="POST" sytle="display: inline-block">
+    {%csrf_token%}
+    <input type="text" name="keyword" id="keyword" class="form-control" style=" width: 200px!important; display: inline-block">
+    <button type="submit" name="search" class="btn btn-success"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <button name="agregar_direccion" class="btn btn-primary" onclick="window.location.href= 'agregar_ventas'"> <i class="fa fa-plus"></i>Nuevo Dirección</button>   
+
+  <div style="overflow-x: auto;">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col">Accion</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            
+        {% for d in direccion %}  
+          <tr>
+            <th scope="row">{{ d.id }}</th>
+            <td>{{ d.nombre }}</td>
+            <td>{{ d.tipo }}</td>
+            <td>{{ d.f_registro }}</td>
+            <td>
+              <button class="btn btn-warning" onclick="window.location.href='actualizar_direccion/{{ d.id }}'"><i class= "fa fa-refresh"></i></button>
+              <button class="btn btn-danger" onclick="window.location.href='eliminar_direccion/{{ d.id }}'"><i class= "fa fa-trash"></i></button>
+            </td>
+          </tr>
+        {% endfor %} 
+
+        </tbody>
+      
+      </table>
+
+</input>
+
+{% endblock %}   

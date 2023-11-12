@@ -1,0 +1,36 @@
+{% extends '../index_master.html' %} 
+
+{% block content %} 
+
+<div class="right_col" role="main">
+<h1> Eliminar Direccion </h1>  
+
+    <form action="" method="POST">
+    {% csrf_token %}
+
+        <div class="form-group row">
+            <label for="nombre" class="col-4 col-form-label">ID Direccion</label> 
+            <div class="col-8">
+                <div class="input-group">
+                <div class="input-group-addon">
+                <i class="fas fa-id-badge"></i>
+                </div> 
+
+                <select id= "id" name="id">
+                {% for d in direccion %}
+                    <option value="{{d.id}}" {% if d.id == direccion.id %} selected {% endif %} >{{d.id}} - {{d.nombre}} {{d.tipo}}</option>
+                {% endfor %}  
+            </select>
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+            <button name="back" class="btn btn-primary" onclick="history.back(); return false;"><i class="fa fa-user-arrows-left"></i> Volver</button>
+            <button name="submit" type="submit" class="btn btn-danger"><i class="fa fa-user-trash"></i> Eliminar Dirección</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}  

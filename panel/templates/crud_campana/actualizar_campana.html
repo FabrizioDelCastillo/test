@@ -1,0 +1,108 @@
+{% extends '../index_master.html' %} 
+
+{% block content %} 
+
+<div class="right_col" role="main">
+    <h1> Actualizar Campañas </h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group row">
+            <label for="nombre" class="col-4 col-form-label">ID Campañas</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fas fa-id-badge"></i>
+                </div> 
+
+                <select id= "id" name="id" class="form-control">
+                {% for c in campanas %}
+                    <option value="{{c.id}}" {%if c.id == campanas.id %} selected {% endif %}> {{c.id}}</option>
+                {% endfor %}  
+            </select>            
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="nombre" class="col-4 col-form-label">Nombre</label> 
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-address-card-o"></i>
+              </div> 
+              <input id="nombre" name="nombre" type="text" required="required" class="form-control" value="{{ campanas.nombre }}">
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group row">
+            <label for="tipo" class="col-4 col-form-label">Tipo</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-address-card-o"></i>
+                </div> 
+                <input id="tipo" name="tipo" type="text" required="required" class="form-control" value="{{ campanas.tipo }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="descripcion" class="col-4 col-form-label">Descripcion</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-inbox"></i>
+                </div> 
+                <input id="descripcion" name="descripcion" type="email" class="form-control" value="{{ campanas.descripcion }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="pais" class="col-4 col-form-label">País</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-phone"></i>
+                </div> 
+                <input id="pais" name="pais" type="number" class="form-control" value="{{ campanas.pais }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="operador" class="col-4 col-form-label">Operadores</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-barcode"></i>
+                </div> 
+                <input id="operador" name="operador" type="number" class="form-control" value="{{ campanas.operador }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="f_final" class="col-4 col-form-label">Fin de Campaña</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div> 
+                <input id="f_final" name="f_final" type="date" required="required" class="form-control" value="{{ campanas.f_final }}">
+              </div>
+            </div>
+          </div> 
+
+          <div class="form-group row">
+            <div class="offset-4 col-8">              
+              <button name="back" class="btn btn-primary" onclick="history.back(); return false;"><i class="fa fa-angles-left"></i> Volver </button>
+              <button name="submit" type="submit" class="btn btn-warning"><i class="fa fa-refresh"></i> Editar Campaña </button>
+            </div>
+          </div>
+      </form>
+</div>
+{% endblock %}  

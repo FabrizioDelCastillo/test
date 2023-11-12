@@ -1,0 +1,60 @@
+{% extends '../index_master.html' %} 
+{% block title %}
+Lista de Campañas
+{% endblock %}
+
+{% block content %} 
+<div class="right_col" role="main">
+    <h1> Lista de Campañas </h1>
+  <div sytle="display: inline-block">
+    <form action="" method="POST" sytle="display: inline-block">
+    {%csrf_token%}
+    <input type="text" name="keyword" id="keyword" class="form-control" style=" width: 200px!important; display: inline-block">
+    <button type="submit" name="search" class="btn btn-success"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <button name="agregar_campana" class="btn btn-primary" onclick="window.location.href= 'agregar_campana'"> <i class="fa fa-plus"></i>Nuevo Campaña</button>   
+
+  <div style="overflow-x: auto;">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">País</th>
+            <th scope="col">Operadores</th>
+            <th scope="col">Fecha Final</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col">Accion</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            
+        {% for c in campana %}  
+          <tr>
+            <th scope="row">{{ c.id }}</th>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.tipo }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td>{{ c.pais }}</td>
+            <td>{{ c.operador }}</td>
+            <td>{{ c.f_final }}</td>
+            <td>{{ c.f_registro }}</td>
+            <td>
+              <button class="btn btn-warning" onclick="window.location.href='actualizar_campana/{{ c.id }}'"><i class= "fa fa-refresh"></i></button>
+              <button class="btn btn-danger" onclick="window.location.href='eliminar_campana/{{ c.id }}'"><i class= "fa fa-trash"></i></button>
+            </td>
+          </tr>
+        {% endfor %} 
+
+        </tbody>
+      
+      </table>
+
+</input>
+
+{% endblock %}   

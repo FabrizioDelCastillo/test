@@ -1,0 +1,77 @@
+{% extends '../index_master.html' %} 
+
+
+{% block title %}
+Lista de Anuncios
+{% endblock %}
+<head>
+{% block extra_head %} {# Agregar estilos en el bloque 'extra_head' #}
+<style>
+  .centered-image {
+    display: block;
+    margin: 0 auto;
+    min-width: 100px; 
+  }
+  .image-container {
+    text-align: center;
+  }
+</style>
+{% endblock %}
+</head>
+
+{% block content %} 
+<div class="right_col" role="main">
+    <h1> Lista de Anuncios </h1>
+  <div style="display: inline-block">
+    <form action="" method="POST" sytle="display: inline-block">
+    {%csrf_token%}
+    <input type="text" name="keyword" id="keyword" class="form-control" style=" width: 200px!important; display: inline-block">
+    <button type="submit" name="search" class="btn btn-success"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <button name="agregar_anuncios" class="btn btn-primary" onclick="window.location.href= 'agregar_anuncios'"> <i class="fa fa-plus"></i>Nuevo Anuncio</button>   
+
+  <div style="overflow-x: auto;">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Fecha Final</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col">Acción</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            
+        {% for a in anuncios %}   
+          <tr>
+            <th scope="row">{{ a.id }}</th>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.tipo }}</td>
+            <td>{{ a.descripcion }}</td>
+            <td>{{ a.f_final }}</td>
+            <td>
+              {% if a.imagen %}
+              <img src="{{ a.imagen.url }}" alt="Imagen"> 
+              {% else %}
+                No hay imagen
+              {% endif %}
+            </td>
+            <td>{{ a.f_registro }}</td>
+            <td>
+              <button class="btn btn-warning" onclick="window.location.href='actualizar_anuncios/{{ a.id }}'"><i class= "fa fa-refresh"></i></button>
+              <button class="btn btn-danger" onclick="window.location.href='eliminar_anuncios/{{ a.id }}'"><i class= "fa fa-trash"></i></button>
+            </td>
+          </tr>
+        {% endfor %} 
+
+        </tbody>
+      
+      </table>
+{% endblock %}   

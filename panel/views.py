@@ -221,11 +221,11 @@ def listar_anuncios(request):
             resultado_busqueda = lista.filter(
                 Q(id__icontains=palabra) |
                 Q(nombre__icontains=palabra) |
-                Q(apellido__icontains=palabra) |
-                Q(correo__icontains=palabra) |
-                Q(telefono__icontains=palabra) |
-                Q(documento__icontains=palabra)
-            )
+                Q(tipo__icontains=palabra) |
+                Q(descripcion__icontains=palabra) |
+                Q(f_final__icontains=palabra) |
+                Q(imagen__icontains=palabra)
+             )
             datos = {'anuncios': resultado_busqueda}
             return render(request, "crud_anuncios/listar_anuncios.html", datos)
         else:
@@ -238,13 +238,13 @@ def listar_anuncios(request):
 
 def agregar_anuncios(request):
     if request.method=='POST':
-        if request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+        if request.POST.get('nombre') and request.POST.get('tipo') and request.POST.get('descripcion') and request.POST.get('f_final') and request.FILES.get('imagen'):
             anuncio = Anuncios()
             anuncio.nombre = request.POST.get('nombre')
-            anuncio.apellido = request.POST.get('apellido')
-            anuncio.correo = request.POST.get('correo')
-            anuncio.documento = request.POST.get('documento')
-            anuncio.f_nac = request.POST.get('f_nac')           
+            anuncio.tipo = request.POST.get('tipo')
+            anuncio.descripcion = request.POST.get('descripcion')
+            anuncio.f_final = request.POST.get('f_final')
+            anuncio.imagen = request.FILES.get('imagen')           
             anuncio.save()            
             return redirect('listar_anuncios')
     else:
@@ -253,7 +253,7 @@ def agregar_anuncios(request):
 def actualizar_anuncios(request, idAnuncio):
     try: 
         if request.method=='POST':
-            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('tipo') and request.POST.get('descripcion') and request.POST.get('f_final') and request.POST.get('imagen'):
                 anuncio_id_old = request.POST.get('id')
                 anuncio_old = Anuncios()
                 anuncio_old = Anuncios.objects.get(id = anuncio_id_old)
@@ -262,11 +262,10 @@ def actualizar_anuncios(request, idAnuncio):
                 anuncio = Anuncios()
                 anuncio.id = request.POST.get('id')
                 anuncio.nombre = request.POST.get('nombre')
-                anuncio.apellido = request.POST.get('apellido')
-                anuncio.correo = request.POST.get('correo')
-                anuncio.telefono = request.POST.get('telefono')
-                anuncio.documento = request.POST.get('documento')
-                anuncio.f_nac = request.POST.get('f_nac')  
+                anuncio.tipo = request.POST.get('tipo')
+                anuncio.descripcion = request.POST.get('descripcion')
+                anuncio.f_final = request.POST.get('f_final')
+                anuncio.imagen = request.FILES.get('imagen')
                 anuncio.f_registro = anuncio_old.f_registro         
                 anuncio.save()            
                 return redirect('listar_anuncios')      
@@ -324,8 +323,8 @@ def listar_asistencia(request):
             datos = {'asistencia': lista}
             return render(request, "crud_asistencia/listar_asistencia.html", datos)
     else:
-        asistencia = Asistencia.objects.order_by('-id')[:10]
-        datos = {'asistencia': asistencia}
+        asistencias = Asistencia.objects.order_by('-id')[:10]
+        datos = {'asistencia': asistencias}
         return render(request, "crud_asistencia/listar_asistencia.html", datos)
 
 def agregar_asistencia(request):
@@ -405,10 +404,11 @@ def listar_campana(request):
             resultado_busqueda = lista.filter(
                 Q(id__icontains=palabra) |
                 Q(nombre__icontains=palabra) |
-                Q(apellido__icontains=palabra) |
-                Q(correo__icontains=palabra) |
-                Q(telefono__icontains=palabra) |
-                Q(documento__icontains=palabra)
+                Q(tipo__icontains=palabra) |
+                Q(descripcion__icontains=palabra) |
+                Q(pais__icontains=palabra) |
+                Q(operador__icontains=palabra)|
+                Q(f_final__icontains=palabra) 
             )
             datos = {'campana': resultado_busqueda}
             return render(request, "crud_campana/listar_campana.html", datos)
@@ -422,13 +422,14 @@ def listar_campana(request):
 
 def agregar_campana(request):
     if request.method=='POST':
-        if request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+        if request.POST.get('nombre') and request.POST.get('tipo') and request.POST.get('descripcion') and request.POST.get('pais') and request.POST.get('operador') and request.POST.get('f_final'):
             campana = Campana()
             campana.nombre = request.POST.get('nombre')
-            campana.apellido = request.POST.get('apellido')
-            campana.correo = request.POST.get('correo')
-            campana.documento = request.POST.get('documento')
-            campana.f_nac = request.POST.get('f_nac')           
+            campana.tipo = request.POST.get('tipo')
+            campana.descripcion = request.POST.get('descripcion')
+            campana.pais = request.POST.get('pais')
+            campana.operador = request.POST.get('operador')
+            campana.f_final = request.POST.get('f_final')           
             campana.save()            
             return redirect('listar_campana')
     else:
@@ -437,7 +438,7 @@ def agregar_campana(request):
 def actualizar_campana(request, idCampana):
     try: 
         if request.method=='POST':
-            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('tipo') and request.POST.get('descripcion') and request.POST.get('pais') and request.POST.get('operadores') and request.POST.get('f_final'):
                 campana_id_old = request.POST.get('id')
                 campana_old = Campana()
                 campana_old = Campana.objects.get(id = campana_id_old)
@@ -446,11 +447,11 @@ def actualizar_campana(request, idCampana):
                 campana = Campana()
                 campana.id = request.POST.get('id')
                 campana.nombre = request.POST.get('nombre')
-                campana.apellido = request.POST.get('apellido')
-                campana.correo = request.POST.get('correo')
-                campana.telefono = request.POST.get('telefono')
-                campana.documento = request.POST.get('documento')
-                campana.f_nac = request.POST.get('f_nac')  
+                campana.tipo = request.POST.get('tipo')
+                campana.descripcion = request.POST.get('descripcion')
+                campana.pais = request.POST.get('pais')
+                campana.operador = request.POST.get('operador')
+                campana.f_final = request.POST.get('f_final')  
                 campana.f_registro = campana_old.f_registro         
                 campana.save()            
                 return redirect('listar_campana')      
@@ -497,10 +498,11 @@ def listar_cartera(request):
             resultado_busqueda = lista.filter(
                 Q(id__icontains=palabra) |
                 Q(nombre__icontains=palabra) |
-                Q(apellido__icontains=palabra) |
-                Q(correo__icontains=palabra) |
-                Q(telefono__icontains=palabra) |
-                Q(documento__icontains=palabra)
+                Q(tipo__icontains=palabra) |
+                Q(descripcion__icontains=palabra) |
+                Q(pais__icontains=palabra) |
+                Q(operador__icontains=palabra)|
+                Q(f_final__icontains=palabra)
             )
             datos = {'cartera': resultado_busqueda}
             return render(request, "crud_cartera/listar_cartera.html", datos)
@@ -514,13 +516,14 @@ def listar_cartera(request):
 
 def agregar_cartera(request):
     if request.method=='POST':
-        if request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
-            cartera = cartera()
+        if request.POST.get('nombre') and request.POST.get('tipo') and request.POST.get('descripcion') and request.POST.get('pais') and request.POST.get('operador') and request.POST.get('f_nac'):
+            cartera = Cartera()
             cartera.nombre = request.POST.get('nombre')
-            cartera.apellido = request.POST.get('apellido')
-            cartera.correo = request.POST.get('correo')
-            cartera.documento = request.POST.get('documento')
-            cartera.f_nac = request.POST.get('f_nac')           
+            cartera.tipo = request.POST.get('tipo')
+            cartera.descripcion = request.POST.get('descripcion')
+            cartera.pais = request.POST.get('pais')
+            cartera.operador = request.POST.get('operador')
+            cartera.f_final = request.POST.get('f_final')           
             cartera.save()            
             return redirect('listar_cartera')
     else:
@@ -536,13 +539,12 @@ def actualizar_cartera(request, idCartera):
                         
                 
                 cartera = Cartera()
-                cartera.id = request.POST.get('id')
                 cartera.nombre = request.POST.get('nombre')
-                cartera.apellido = request.POST.get('apellido')
-                cartera.correo = request.POST.get('correo')
-                cartera.telefono = request.POST.get('telefono')
-                cartera.documento = request.POST.get('documento')
-                cartera.f_nac = request.POST.get('f_nac')  
+                cartera.tipo = request.POST.get('tipo')
+                cartera.descripcion = request.POST.get('descripcion')
+                cartera.pais = request.POST.get('pais')
+                cartera.operador = request.POST.get('operador')
+                cartera.f_final = request.POST.get('f_final')   
                 cartera.f_registro = cartera_old.f_registro         
                 cartera.save()            
                 return redirect('listar_cartera')      
@@ -590,10 +592,7 @@ def listar_direccion(request):
             resultado_busqueda = lista.filter(
                 Q(id__icontains=palabra) |
                 Q(nombre__icontains=palabra) |
-                Q(apellido__icontains=palabra) |
-                Q(correo__icontains=palabra) |
-                Q(telefono__icontains=palabra) |
-                Q(documento__icontains=palabra)
+                Q(tipo__icontains=palabra) 
             )
             datos = {'direccion': resultado_busqueda}
             return render(request, "crud_direccion/listar_direccion.html", datos)
@@ -607,13 +606,10 @@ def listar_direccion(request):
 
 def agregar_direccion(request):
     if request.method=='POST':
-        if request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+        if request.POST.get('nombre') and request.POST.get('tipo') :
             direccion = Direccion()
             direccion.nombre = request.POST.get('nombre')
-            direccion.apellido = request.POST.get('apellido')
-            direccion.correo = request.POST.get('correo')
-            direccion.documento = request.POST.get('documento')
-            direccion.f_nac = request.POST.get('f_nac')           
+            direccion.tipo = request.POST.get('tipo')          
             direccion.save()            
             return redirect('listar_direccion')
     else:
@@ -622,7 +618,7 @@ def agregar_direccion(request):
 def actualizar_direccion(request, idDireccion):
     try: 
         if request.method=='POST':
-            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('apellido') and request.POST.get('correo') and request.POST.get('telefono') and request.POST.get('documento') and request.POST.get('f_nac'):
+            if request.POST.get('id') and request.POST.get('nombre') and request.POST.get('tipo'):
                 direccion_id_old = request.POST.get('id')
                 direccion_old = Direccion()
                 direccion_old = Direccion.objects.get(id = direccion_id_old)
@@ -631,11 +627,7 @@ def actualizar_direccion(request, idDireccion):
                 direccion = Direccion()
                 direccion.id = request.POST.get('id')
                 direccion.nombre = request.POST.get('nombre')
-                direccion.apellido = request.POST.get('apellido')
-                direccion.correo = request.POST.get('correo')
-                direccion.telefono = request.POST.get('telefono')
-                direccion.documento = request.POST.get('documento')
-                direccion.f_nac = request.POST.get('f_nac')  
+                direccion.tipo = request.POST.get('tipo')
                 direccion.f_registro =direccion_old.f_registro         
                 direccion.save()            
                 return redirect('listar_direccion')      
@@ -1468,7 +1460,7 @@ def actualizar_tecnologia(request, idTecnologia):
                 return redirect('listar_tecnologia')      
         else:
             tecnologias = Tecnologia.objects.all()
-            tecnologia = Tecnologia.objects.get(id=idTarifa)
+            tecnologia = Tecnologia.objects.get(id=idTecnologia)
             datos = { 'tecnologias' : tecnologias, 'tecnologia': tecnologia}
             return render(request, "crud_tecnologia/actualizar_tecnologia.html", datos)
         
@@ -1498,3 +1490,4 @@ def eliminar_tecnologia(request, idTecnologia):
         tecnologia = None
         datos =  { 'tecnologias' : tecnologias, 'tecnologia' : tecnologia }
         return render(request, "crud_tecnologia/eliminar_tecnologia.html",datos) 
+    
